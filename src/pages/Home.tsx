@@ -29,7 +29,7 @@ function Home() {
           ))
         );
       })}
-      <div>
+      <div className="max-w-xs xl:max-w-sm">
         {hasNextPage && (
           <Button
             disabled={isFetchingNextPage}
