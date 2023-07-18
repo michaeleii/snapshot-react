@@ -18,9 +18,9 @@ function Card({
           className="h-10 w-10 rounded-full object-cover shadow-inner"
         />
         <span>{username}</span>
-        {/* <div className="ml-auto">
+        <div className="ml-auto">
           <HeartIcon className="h-7 w-7 hover:cursor-pointer hover:fill-red-400" />
-        </div> */}
+        </div>
       </div>
     </div>
   );
