@@ -17,7 +17,7 @@ function Home() {
     <div className="grid grid-cols-1 justify-items-center gap-10 overflow-y-auto p-10  px-5 xl:max-h-screen xl:p-20">
       {posts.pages.map((page) => {
         return page.data.length === 0 ? (
-          <p>You've viewed every post</p>
+          <p>You have viewed every post 🎉</p>
         ) : (
           page.data.map((post) => (
             <Card
@@ -29,7 +29,7 @@ function Home() {
           ))
         );
       })}
-      <div className="max-w-xs xl:max-w-sm">
+      <div className="w-full xl:max-w-sm">
         {hasNextPage && (
           <Button
             disabled={isFetchingNextPage}
