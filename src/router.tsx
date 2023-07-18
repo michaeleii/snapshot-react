@@ -3,7 +3,9 @@ import routes from "./routes";
 import Home from "./pages/Home";
 import UploadImage from "./features/posts/UploadImage";
 import MainLayout from "./pages/MainLayout";
-import Login from "./pages/Login";
+import FormLayout from "./pages/Login";
+import LoginForm from "./features/authentication/LoginForm";
+import SignupForm from "./features/authentication/SignupForm";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,19 @@ const router = createBrowserRouter([
   },
   {
     path: routes.login,
-    element: <Login />,
+    element: (
+      <FormLayout>
+        <LoginForm />
+      </FormLayout>
+    ),
+  },
+  {
+    path: routes.signup,
+    element: (
+      <FormLayout>
+        <SignupForm />
+      </FormLayout>
+    ),
   },
 
   {

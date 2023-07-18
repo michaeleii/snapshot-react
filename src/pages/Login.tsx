@@ -1,9 +1,7 @@
-import LoginForm from "../features/authentication/LoginForm";
-
-function Login() {
+function FormLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2">
-      <LoginForm />
+      {children}
       <img
         src="/test_post.jpg"
         alt=""
@@ -12,4 +10,4 @@ function Login() {
     </div>
   );
 }
-export default Login;
+export default FormLayout;
