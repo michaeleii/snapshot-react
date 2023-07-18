@@ -2,7 +2,7 @@ import Button from "../misc/Button";
 import { useCreatePost } from "./useCreatePost";
 
 function UploadImage() {
-  const { mutate } = useCreatePost();
+  const { mutate, isLoading } = useCreatePost();
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (e.target instanceof HTMLFormElement) {
@@ -32,7 +32,9 @@ function UploadImage() {
           />
         </div>
         <div>
-          <Button>Upload</Button>
+          <Button disabled={isLoading}>
+            {isLoading ? "Uploading..." : "Upload"}
+          </Button>
         </div>
       </form>
     </div>

@@ -4,12 +4,12 @@ import { createPost } from "../../services/apiPost";
 
 export function useCreatePost() {
   const navigate = useNavigate();
-  const { mutate } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationKey: ["createPost"],
     mutationFn: (image: File) => createPost(image),
     onSuccess: () => {
       navigate("/");
     },
   });
-  return { mutate };
+  return { mutate, isLoading };
 }
