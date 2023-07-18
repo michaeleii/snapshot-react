@@ -6,7 +6,7 @@ import Logo from "./Logo";
 
 function MainNav() {
   return (
-    <nav className="sticky top-0 flex flex-col items-center justify-around gap-5 border-b-2 border-black bg-white p-10 xl:min-h-screen xl:justify-start xl:border-b-0 xl:border-r-2 xl:p-20">
+    <nav className="sticky top-0 flex flex-row items-center justify-around gap-5 border-b-2 border-black bg-white p-5 xl:min-h-screen xl:justify-start xl:border-b-0 xl:border-r-2 xl:p-20">
       <Logo />
       <ul className="flex gap-5">
         <li>
