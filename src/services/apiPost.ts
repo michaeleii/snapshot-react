@@ -1,22 +1,25 @@
 import { randomImageName } from "../helpers/generateRandomImageName";
+import { getPagination } from "../helpers/getPagination";
 import supabase, { supabaseUrl } from "./supabase";
 
-export async function getAllPosts() {
+export async function getAllPosts(page: number) {
+  const { from, to } = getPagination(page, 2);
   const { data, error } = await supabase
     .from("post")
     .select(
       `
     id,
     image_url,
-    user_id
+    user ( id, username )
     `
     )
+    .range(from, to)
     .order("created_at", { ascending: false });
   if (error) {
     throw error;
   }
 
-  return data;
+  return { data, page };
 }
 
 export async function createPost(image: File) {

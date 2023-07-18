@@ -32,6 +32,28 @@ export interface Database {
           {
             foreignKeyName: "post_user_id_fkey"
             columns: ["user_id"]
+            referencedRelation: "user"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      user: {
+        Row: {
+          id: string
+          username: string
+        }
+        Insert: {
+          id: string
+          username: string
+        }
+        Update: {
+          id?: string
+          username?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_id_fkey"
+            columns: ["id"]
             referencedRelation: "users"
             referencedColumns: ["id"]
           }

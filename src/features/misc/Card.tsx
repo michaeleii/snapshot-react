@@ -14,7 +14,6 @@ function Card({
       <div className="flex items-center gap-5 p-3">
         <img
           src={profileImage}
-          alt={username}
           className="h-10 w-10 rounded-full object-cover shadow-inner"
         />
         <span>{username}</span>
