@@ -23,9 +23,16 @@ export async function createPost(image: File) {
   const [imageName, extension] = image.name.split(".");
   const randomizedImageName = randomImageName(imageName, extension);
   const image_url = `${supabaseUrl}/storage/v1/object/public/user-images/${randomizedImageName}`;
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+  if (!user) return null;
+  if (userError) throw userError;
+
   const { data, error } = await supabase
     .from("post")
-    .insert([{ user_id: "f1c8edda-1b8e-4da6-b0e1-5da35bd77a61", image_url }])
+    .insert([{ user_id: user.id, image_url }])
     .select();
   if (error) throw error;
 
