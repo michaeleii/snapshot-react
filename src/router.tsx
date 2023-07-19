@@ -4,13 +4,18 @@ import Home from "./pages/Home";
 import UploadImage from "./features/posts/UploadImage";
 import MainLayout from "./pages/MainLayout";
 import FormLayout from "./pages/Login";
-import LoginForm from "./features/authentication/LoginForm";
-import SignupForm from "./features/authentication/SignupForm";
+import LoginForm from "./features/auth/LoginForm";
+import SignupForm from "./features/auth/SignupForm";
+import UserProvider from "./features/user/UserContext";
 
 const router = createBrowserRouter([
   {
     path: routes.home,
-    element: <MainLayout />,
+    element: (
+      <UserProvider>
+        <MainLayout />
+      </UserProvider>
+    ),
     children: [
       {
         index: true,

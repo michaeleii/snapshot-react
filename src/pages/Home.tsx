@@ -10,7 +10,6 @@ function Home() {
     isFetchingNextPage,
     fetchNextPage,
   } = usePosts();
-  console.log(posts);
   if (isLoading) return <div>Loading...</div>;
   if (!posts) return null;
   return (
