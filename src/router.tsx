@@ -35,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: routes.settings,
-        element: <SettingsForm />,
+        element: (
+          <ProtectedRoute>
+            <SettingsForm />
+          </ProtectedRoute>
+        ),
       },
       {
         path: routes.profile,
