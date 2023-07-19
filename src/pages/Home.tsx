@@ -10,7 +10,7 @@ function Home() {
     isFetchingNextPage,
     fetchNextPage,
   } = usePosts();
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return null;
   if (!posts) return null;
   return (
     <div className="grid grid-cols-1 justify-items-center gap-10 overflow-y-auto p-10  px-5 xl:max-h-screen xl:p-20">

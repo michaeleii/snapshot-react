@@ -10,6 +10,7 @@ import SignupForm from "./features/auth/SignupForm";
 import UserProvider from "./features/auth/UserContext";
 import ProtectedRoute from "./features/auth/ProtectedRoute";
 import AlreadyLoggedIn from "./features/auth/AlreadyLoggedIn";
+import SettingsForm from "./features/user/SettingsForm";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
             <UploadImage />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: routes.settings,
+        element: <SettingsForm />,
+      },
+      {
+        path: routes.profile,
+        element: <div>Profile</div>,
       },
     ],
   },
@@ -60,10 +69,6 @@ const router = createBrowserRouter([
   {
     path: routes.search,
     element: <div>Search</div>,
-  },
-  {
-    path: routes.profile,
-    element: <div>Profile</div>,
   },
 ]);
 

@@ -3,8 +3,9 @@ const routes = {
   upload: "/upload",
   login: "/login",
   signup: "/signup",
-  profile: "/profile",
+  profile: "/profile/:id",
   search: "/search",
+  settings: "/settings",
 };
 
 export default routes;

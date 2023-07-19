@@ -49,3 +49,19 @@ export async function getCurrentUser() {
   if (error) throw error;
   return currentUser?.[0];
 }
+
+export async function updateUser(username: string) {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+  if (!user) return null;
+  if (userError) throw userError;
+  const { data, error } = await supabase
+    .from("user")
+    .update({ username })
+    .eq("id", user.id)
+    .select();
+  if (error) throw error;
+  return data;
+}
