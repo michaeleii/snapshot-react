@@ -44,3 +44,20 @@ export async function createPost(image: File) {
 
   return data;
 }
+
+export async function deletePost(id: number) {
+  const { data, error } = await supabase
+    .from("post")
+    .delete()
+    .match({ id })
+    .select();
+  if (!data) return null;
+  if (error) throw error;
+  const photo = data[0];
+  const imageName = photo.image_url.split("/").pop() || "";
+  const { error: StorageError } = await supabase.storage
+    .from("user-images")
+    .remove([`${photo.user_id}/${imageName}`]);
+  if (StorageError) throw StorageError;
+  return data;
+}

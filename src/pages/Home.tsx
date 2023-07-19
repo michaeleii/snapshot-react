@@ -21,6 +21,8 @@ function Home() {
           page.data.map((post) => (
             <Card
               key={post.id}
+              postId={post.id}
+              userId={post.user?.id}
               username={post.user?.username || "Anonymous User"}
               profileImage="/default-user.jpg"
               image={post.image_url}
