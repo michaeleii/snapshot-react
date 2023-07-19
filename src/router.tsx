@@ -7,7 +7,7 @@ import MainLayout from "./pages/MainLayout";
 import FormLayout from "./pages/Login";
 import LoginForm from "./features/auth/LoginForm";
 import SignupForm from "./features/auth/SignupForm";
-import UserProvider from "./features/user/UserContext";
+import UserProvider from "./features/auth/UserContext";
 import ProtectedRoute from "./features/auth/ProtectedRoute";
 import AlreadyLoggedIn from "./features/auth/AlreadyLoggedIn";
 

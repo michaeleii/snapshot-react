@@ -3,7 +3,7 @@ import routes from "../../routes";
 
 import Button from "./Button";
 import Logo from "./Logo";
-import { useUser } from "../user/UserContext";
+import { useUser } from "../auth/UserContext";
 import { useLogout } from "../auth/useLogout";
 
 function MainNav() {
