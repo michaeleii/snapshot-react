@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import routes from "../../routes";
-import { PlusIcon } from "@heroicons/react/20/solid";
 
 import Button from "./Button";
 import Logo from "./Logo";
