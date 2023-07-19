@@ -7,7 +7,7 @@ import { useUser } from "../user/UserContext";
 import { useLogout } from "../auth/useLogout";
 
 function MainNav() {
-  const { currentUser, isLoadingUser } = useUser();
+  const { currentUser, isLoadingUser, isAuthenticated } = useUser();
   const { mutate: logout, isLoading: isLoggingOut } = useLogout();
 
   return (
@@ -16,7 +16,7 @@ function MainNav() {
         <Logo />
       </div>
 
-      {!currentUser && !isLoadingUser && (
+      {!isAuthenticated && !isLoadingUser && (
         <div className="flex gap-5 xl:mt-auto xl:flex-col">
           <Link to={routes.login} className="w-full">
             <Button>Login</Button>

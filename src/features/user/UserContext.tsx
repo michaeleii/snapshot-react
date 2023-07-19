@@ -10,11 +10,13 @@ interface User {
 interface UserContextType {
   currentUser: User | null;
   isLoadingUser: boolean;
+  isAuthenticated: boolean;
 }
 
 const UserContext = createContext<UserContextType>({
   currentUser: null,
   isLoadingUser: false,
+  isAuthenticated: false,
 });
 
 function UserProvider({ children }: { children: React.ReactNode }) {
@@ -24,8 +26,11 @@ function UserProvider({ children }: { children: React.ReactNode }) {
     retry: false,
   });
   const currentUser = data ?? null;
+  const isAuthenticated = !!currentUser;
   return (
-    <UserContext.Provider value={{ currentUser, isLoadingUser: isLoading }}>
+    <UserContext.Provider
+      value={{ currentUser, isLoadingUser: isLoading, isAuthenticated }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -20,15 +20,16 @@ export async function getAllPosts(page: number) {
 }
 
 export async function createPost(image: File) {
-  const [imageName, extension] = image.name.split(".");
-  const randomizedImageName = randomImageName(imageName, extension);
-  const image_url = `${supabaseUrl}/storage/v1/object/public/user-images/${randomizedImageName}`;
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.getUser();
   if (!user) return null;
   if (userError) throw userError;
+
+  const [imageName, extension] = image.name.split(".");
+  const randomizedImageName = randomImageName(imageName, extension);
+  const image_url = `${supabaseUrl}/storage/v1/object/public/user-images/${user.id}/${randomizedImageName}`;
 
   const { data, error } = await supabase
     .from("post")
@@ -38,7 +39,7 @@ export async function createPost(image: File) {
 
   const { error: StorageError } = await supabase.storage
     .from("user-images")
-    .upload(randomizedImageName, image);
+    .upload(`${user.id}/${randomizedImageName}`, image);
   if (StorageError) throw StorageError;
 
   return data;

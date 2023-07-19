@@ -6,6 +6,9 @@ import Button from "../misc/Button";
 import Form from "../misc/Form";
 import Logo from "../misc/Logo";
 import { useLogin } from "./useLogin";
+import { useUser } from "../user/UserContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const schema = z.object({
   email: z.string().email({ message: "Invalid email address" }),

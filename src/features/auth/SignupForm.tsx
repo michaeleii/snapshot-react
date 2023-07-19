@@ -1,10 +1,14 @@
+import { useEffect } from "react";
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
+
 import Button from "../misc/Button";
 import Logo from "../misc/Logo";
 import Form from "../misc/Form";
 import { useSignUp } from "./useSignup";
+import { useUser } from "../user/UserContext";
 
 const schema = z.object({
   username: z
