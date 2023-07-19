@@ -17,27 +17,32 @@ function MainNav() {
       </div>
 
       {!currentUser && !isLoadingUser && (
-        <div className="flex gap-5 self-end xl:self-center">
-          <Link to={routes.login}>
+        <div className="flex gap-5 xl:mt-auto xl:flex-col">
+          <Link to={routes.login} className="w-full">
             <Button>Login</Button>
           </Link>
-          <Link to={routes.signup}>
+          <Link to={routes.signup} className="w-full">
             <Button>Sign Up</Button>
           </Link>
         </div>
       )}
       {currentUser && !isLoadingUser && (
         <>
-          <p className="mb-3 hidden text-xl text-black xl:block">
-            Welcome {currentUser.username}!
+          <img
+            src="/default-user.jpg"
+            alt=""
+            className="mx-auto mt-10 hidden w-20 rounded-full object-cover xl:block"
+          />
+          <p className="mb-3 hidden text-center text-xl text-black xl:block">
+            {currentUser.username}
           </p>
-          <div className="flex gap-5 self-center xl:flex-col">
-            <div>
+          <div className="flex gap-5 xl:mt-auto xl:flex-col">
+            <div className="w-full xl:order-2">
               <Button onClick={() => logout()} disabled={isLoggingOut}>
                 {isLoggingOut ? "Logging out" : "Logout"}
               </Button>
             </div>
-            <div>
+            <div className="w-full xl:order-1">
               <Link to={routes.upload}>
                 <Button>Create Post</Button>
               </Link>
