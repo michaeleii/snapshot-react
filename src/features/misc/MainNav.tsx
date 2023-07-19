@@ -15,9 +15,11 @@ function MainNav() {
     <nav className="sticky top-0 flex flex-col gap-5 border-b-2 border-black bg-white p-5 xl:min-h-screen xl:justify-start xl:border-b-0 xl:border-r-2 xl:p-20">
       <div className="flex items-center justify-between">
         <Logo />
-        <Link to="/settings">
-          <Cog8ToothIcon className="h-10 w-10 transition-colors  hover:fill-blue-500 xl:hidden" />
-        </Link>
+        {isAuthenticated && (
+          <Link to="/settings">
+            <Cog8ToothIcon className="h-10 w-10 transition-colors  hover:fill-blue-500 xl:hidden" />
+          </Link>
+        )}
       </div>
 
       {!isAuthenticated && !isLoadingUser && (

@@ -7,7 +7,7 @@ function AlreadyLoggedIn({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoadingUser } = useUser();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/");
+    if (isAuthenticated) navigate("/", { replace: true });
   }, [isAuthenticated, navigate]);
 
   if (isLoadingUser) return null;
