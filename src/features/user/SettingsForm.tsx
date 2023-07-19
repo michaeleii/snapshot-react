@@ -6,6 +6,7 @@ import { useUser } from "../auth/UserContext";
 import Button from "../misc/Button";
 import Form from "../misc/Form";
 import { useUpdateUser } from "./useUpdateUser";
+import { getCurrentUser } from "../../services/apiAuth";
 
 const schema = z.object({
   username: z
@@ -17,14 +18,20 @@ type FormData = z.infer<typeof schema>;
 
 function SettingsForm() {
   const { currentUser } = useUser();
+
+  const { mutate: updateUser, isLoading: isUpdating } = useUpdateUser();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
+    defaultValues: async () => {
+      const user = await getCurrentUser();
+      if (!user) return { username: "" };
+      return { username: user.username };
+    },
     resolver: zodResolver(schema),
   });
-  const { mutate: updateUser, isLoading: isUpdating } = useUpdateUser();
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     if (currentUser?.username === data.username) return;
@@ -33,9 +40,11 @@ function SettingsForm() {
     };
     updateUser(updatedUser);
   };
+  if (!currentUser) return null;
   return (
-    <div className="flex max-w-7xl items-center justify-center">
-      <Form
+    <div className="xl:flex xl:items-center xl:justify-center">
+      <form
+        className="flex flex-col gap-5 p-10"
         onSubmit={(e) => {
           e.preventDefault();
           void handleSubmit(onSubmit)(e);
@@ -50,7 +59,6 @@ function SettingsForm() {
             type="text"
             placeholder="Username"
             {...register("username")}
-            defaultValue={currentUser?.username}
             error={errors.username?.message}
           />
         </Form.InputGroup>
@@ -59,7 +67,7 @@ function SettingsForm() {
             <span>{isUpdating ? "Updating..." : "Save"}</span>
           </Button>
         </div>
-      </Form>
+      </form>
     </div>
   );
 }
