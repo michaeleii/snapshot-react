@@ -14,8 +14,8 @@ function MainNav() {
     <nav className="sticky top-0 flex flex-row items-center justify-around gap-5 border-b-2 border-black bg-white p-5 xl:min-h-screen xl:flex-col xl:justify-start xl:border-b-0 xl:border-r-2 xl:p-20">
       <Logo />
       {currentUser && !isLoadingUser && (
-        <div className="hidden xl:block">
-          <p className="mb-3 text-xl text-black">
+        <div className="">
+          <p className="mb-3 hidden text-xl text-black xl:block">
             Welcome {currentUser.username}!
           </p>
           <Button onClick={() => logout()} disabled={isLoggingOut}>
@@ -24,7 +24,7 @@ function MainNav() {
         </div>
       )}
       {!currentUser && !isLoadingUser && (
-        <div className="hidden xl:flex xl:gap-5">
+        <div className="flex gap-5">
           <Link to={routes.login}>
             <Button>Login</Button>
           </Link>
